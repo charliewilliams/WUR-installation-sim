@@ -15,6 +15,14 @@
 		C0874DC320AED635008EE603 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0874DC220AED635008EE603 /* Assets.xcassets */; };
 		C0874DC620AED635008EE603 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0874DC420AED635008EE603 /* Main.storyboard */; };
 		C0874DD220AED635008EE603 /* WUR_installation_prototypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0874DD120AED635008EE603 /* WUR_installation_prototypeTests.swift */; };
+		C0874DDD20AED779008EE603 /* Statelet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0874DDC20AED779008EE603 /* Statelet.swift */; };
+		C0874DDF20AEDAF3008EE603 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0874DDE20AEDAF3008EE603 /* State.swift */; };
+		C0874DE120AEE629008EE603 /* Port.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0874DE020AEE629008EE603 /* Port.swift */; };
+		C0874DE320AEE69D008EE603 /* Comms.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0874DE220AEE69D008EE603 /* Comms.swift */; };
+		C0874DE520AEED4B008EE603 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0874DE420AEED4B008EE603 /* Collection.swift */; };
+		C0874DE720AEED52008EE603 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0874DE620AEED52008EE603 /* Array.swift */; };
+		C0874DEA20AF16CE008EE603 /* StateMutatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0874DE920AF16CE008EE603 /* StateMutatable.swift */; };
+		C0874DEC20AF1923008EE603 /* Float.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0874DEB20AF1923008EE603 /* Float.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +49,14 @@
 		C0874DCD20AED635008EE603 /* WUR-installation-prototypeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "WUR-installation-prototypeTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0874DD120AED635008EE603 /* WUR_installation_prototypeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WUR_installation_prototypeTests.swift; sourceTree = "<group>"; };
 		C0874DD320AED635008EE603 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C0874DDC20AED779008EE603 /* Statelet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statelet.swift; sourceTree = "<group>"; };
+		C0874DDE20AEDAF3008EE603 /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
+		C0874DE020AEE629008EE603 /* Port.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Port.swift; sourceTree = "<group>"; };
+		C0874DE220AEE69D008EE603 /* Comms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comms.swift; sourceTree = "<group>"; };
+		C0874DE420AEED4B008EE603 /* Collection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
+		C0874DE620AEED52008EE603 /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
+		C0874DE920AF16CE008EE603 /* StateMutatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateMutatable.swift; sourceTree = "<group>"; };
+		C0874DEB20AF1923008EE603 /* Float.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Float.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +103,13 @@
 				C0874DBC20AED633008EE603 /* Actions.sks */,
 				C0874DBE20AED633008EE603 /* GameScene.swift */,
 				C0874DC020AED633008EE603 /* ViewController.swift */,
+				C0874DDC20AED779008EE603 /* Statelet.swift */,
+				C0874DDE20AEDAF3008EE603 /* State.swift */,
+				C0874DE020AEE629008EE603 /* Port.swift */,
+				C0874DE920AF16CE008EE603 /* StateMutatable.swift */,
+				C0874DE220AEE69D008EE603 /* Comms.swift */,
+				C0874DEB20AF1923008EE603 /* Float.swift */,
+				C0874DE820AEED9A008EE603 /* Common */,
 				C0874DC220AED635008EE603 /* Assets.xcassets */,
 				C0874DC420AED635008EE603 /* Main.storyboard */,
 				C0874DC720AED635008EE603 /* Info.plist */,
@@ -102,6 +125,15 @@
 				C0874DD320AED635008EE603 /* Info.plist */,
 			);
 			path = "WUR-installation-prototypeTests";
+			sourceTree = "<group>";
+		};
+		C0874DE820AEED9A008EE603 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				C0874DE420AEED4B008EE603 /* Collection.swift */,
+				C0874DE620AEED52008EE603 /* Array.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -206,9 +238,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0874DEC20AF1923008EE603 /* Float.swift in Sources */,
+				C0874DE720AEED52008EE603 /* Array.swift in Sources */,
+				C0874DE120AEE629008EE603 /* Port.swift in Sources */,
+				C0874DE320AEE69D008EE603 /* Comms.swift in Sources */,
 				C0874DC120AED633008EE603 /* ViewController.swift in Sources */,
 				C0874DBF20AED633008EE603 /* GameScene.swift in Sources */,
 				C0874DB920AED633008EE603 /* AppDelegate.swift in Sources */,
+				C0874DDF20AEDAF3008EE603 /* State.swift in Sources */,
+				C0874DEA20AF16CE008EE603 /* StateMutatable.swift in Sources */,
+				C0874DDD20AED779008EE603 /* Statelet.swift in Sources */,
+				C0874DE520AEED4B008EE603 /* Collection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
