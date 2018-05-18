@@ -23,6 +23,12 @@
 		C0874DE720AEED52008EE603 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0874DE620AEED52008EE603 /* Array.swift */; };
 		C0874DEA20AF16CE008EE603 /* StateMutatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0874DE920AF16CE008EE603 /* StateMutatable.swift */; };
 		C0874DEC20AF1923008EE603 /* Float.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0874DEB20AF1923008EE603 /* Float.swift */; };
+		C0874DF120AF1CCD008EE603 /* Pixel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0874DF020AF1CCD008EE603 /* Pixel.swift */; };
+		C0874DF320AF1CD4008EE603 /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0874DF220AF1CD4008EE603 /* Cell.swift */; };
+		C0874DF520AF1E84008EE603 /* CellBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0874DF420AF1E84008EE603 /* CellBuilder.swift */; };
+		C0874DF720AF2344008EE603 /* NSColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0874DF620AF2344008EE603 /* NSColor.swift */; };
+		C0874DF920AF2C1A008EE603 /* InstallationScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = C0874DF820AF2C1A008EE603 /* InstallationScene.sks */; };
+		C0874DFB20AF2C8E008EE603 /* InstallationScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0874DFA20AF2C8E008EE603 /* InstallationScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +63,12 @@
 		C0874DE620AEED52008EE603 /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		C0874DE920AF16CE008EE603 /* StateMutatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateMutatable.swift; sourceTree = "<group>"; };
 		C0874DEB20AF1923008EE603 /* Float.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Float.swift; sourceTree = "<group>"; };
+		C0874DF020AF1CCD008EE603 /* Pixel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pixel.swift; sourceTree = "<group>"; };
+		C0874DF220AF1CD4008EE603 /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
+		C0874DF420AF1E84008EE603 /* CellBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellBuilder.swift; sourceTree = "<group>"; };
+		C0874DF620AF2344008EE603 /* NSColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSColor.swift; sourceTree = "<group>"; };
+		C0874DF820AF2C1A008EE603 /* InstallationScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = InstallationScene.sks; sourceTree = "<group>"; };
+		C0874DFA20AF2C8E008EE603 /* InstallationScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallationScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,15 +111,15 @@
 			isa = PBXGroup;
 			children = (
 				C0874DB820AED633008EE603 /* AppDelegate.swift */,
+				C0874DC020AED633008EE603 /* ViewController.swift */,
 				C0874DBA20AED633008EE603 /* GameScene.sks */,
 				C0874DBC20AED633008EE603 /* Actions.sks */,
 				C0874DBE20AED633008EE603 /* GameScene.swift */,
-				C0874DC020AED633008EE603 /* ViewController.swift */,
-				C0874DDC20AED779008EE603 /* Statelet.swift */,
-				C0874DDE20AEDAF3008EE603 /* State.swift */,
-				C0874DE020AEE629008EE603 /* Port.swift */,
-				C0874DE920AF16CE008EE603 /* StateMutatable.swift */,
-				C0874DE220AEE69D008EE603 /* Comms.swift */,
+				C0874DF820AF2C1A008EE603 /* InstallationScene.sks */,
+				C0874DFA20AF2C8E008EE603 /* InstallationScene.swift */,
+				C0874DEF20AF1C93008EE603 /* Display */,
+				C0874DED20AF1C7B008EE603 /* State */,
+				C0874DEE20AF1C84008EE603 /* Mesh */,
 				C0874DEB20AF1923008EE603 /* Float.swift */,
 				C0874DE820AEED9A008EE603 /* Common */,
 				C0874DC220AED635008EE603 /* Assets.xcassets */,
@@ -132,8 +144,38 @@
 			children = (
 				C0874DE420AEED4B008EE603 /* Collection.swift */,
 				C0874DE620AEED52008EE603 /* Array.swift */,
+				C0874DF620AF2344008EE603 /* NSColor.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		C0874DED20AF1C7B008EE603 /* State */ = {
+			isa = PBXGroup;
+			children = (
+				C0874DDC20AED779008EE603 /* Statelet.swift */,
+				C0874DDE20AEDAF3008EE603 /* State.swift */,
+			);
+			path = State;
+			sourceTree = "<group>";
+		};
+		C0874DEE20AF1C84008EE603 /* Mesh */ = {
+			isa = PBXGroup;
+			children = (
+				C0874DE020AEE629008EE603 /* Port.swift */,
+				C0874DE920AF16CE008EE603 /* StateMutatable.swift */,
+				C0874DE220AEE69D008EE603 /* Comms.swift */,
+			);
+			path = Mesh;
+			sourceTree = "<group>";
+		};
+		C0874DEF20AF1C93008EE603 /* Display */ = {
+			isa = PBXGroup;
+			children = (
+				C0874DF020AF1CCD008EE603 /* Pixel.swift */,
+				C0874DF220AF1CD4008EE603 /* Cell.swift */,
+				C0874DF420AF1E84008EE603 /* CellBuilder.swift */,
+			);
+			path = Display;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -217,6 +259,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0874DF920AF2C1A008EE603 /* InstallationScene.sks in Resources */,
 				C0874DBB20AED633008EE603 /* GameScene.sks in Resources */,
 				C0874DC320AED635008EE603 /* Assets.xcassets in Resources */,
 				C0874DBD20AED633008EE603 /* Actions.sks in Resources */,
@@ -239,9 +282,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0874DEC20AF1923008EE603 /* Float.swift in Sources */,
+				C0874DF720AF2344008EE603 /* NSColor.swift in Sources */,
+				C0874DFB20AF2C8E008EE603 /* InstallationScene.swift in Sources */,
 				C0874DE720AEED52008EE603 /* Array.swift in Sources */,
 				C0874DE120AEE629008EE603 /* Port.swift in Sources */,
 				C0874DE320AEE69D008EE603 /* Comms.swift in Sources */,
+				C0874DF120AF1CCD008EE603 /* Pixel.swift in Sources */,
+				C0874DF520AF1E84008EE603 /* CellBuilder.swift in Sources */,
+				C0874DF320AF1CD4008EE603 /* Cell.swift in Sources */,
 				C0874DC120AED633008EE603 /* ViewController.swift in Sources */,
 				C0874DBF20AED633008EE603 /* GameScene.swift in Sources */,
 				C0874DB920AED633008EE603 /* AppDelegate.swift in Sources */,

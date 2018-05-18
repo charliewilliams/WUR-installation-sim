@@ -10,13 +10,9 @@ import Foundation
 
 class State {
 
-    static let global = State()
-
     var statelets = [Statelet]()
 
-    private init() {
-
-    }
+    init() { }
 
     // a way to update the leds based on the sum of the current statelets
     func tick() {
