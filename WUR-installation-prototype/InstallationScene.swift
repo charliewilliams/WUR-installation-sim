@@ -21,7 +21,7 @@ class InstallationScene: SKScene {
 
     override func mouseUp(with event: NSEvent) {
 
-        let cell = CellBuilder.cell(id: cells.count)
+        let cell = CellBuilder.cell(id: cells.count, radius: 30)
         cells.append(cell)
         cell.position = event.location(in: self)
 

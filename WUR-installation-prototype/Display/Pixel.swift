@@ -9,13 +9,13 @@
 import SpriteKit
 
 let debugColors: [NSColor] = [.red, .orange, .yellow, .green,
-                                     .blue, .purple, .brown, .black,
+                                     .lightBlue, .purple, .brown, .lightGray,
                                      .gray, .pink, .cyan, .magenta]
 
 class Pixel: SKSpriteNode {
 
-    convenience init(id: Int) {
-        self.init(color: debugColors[id % debugColors.count], size: CGSize(width: 10, height: 10))
+    convenience init(id: Int, size: CGFloat) {
+        self.init(color: debugColors[id % debugColors.count], size: CGSize(width: size, height: size))
     }
 
     override init(texture: SKTexture!, color: NSColor, size: CGSize) {

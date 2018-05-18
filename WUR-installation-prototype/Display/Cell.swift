@@ -8,8 +8,6 @@
 
 import SpriteKit
 
-let radius: CGFloat = 30
-
 class Cell: SKShapeNode {
 
     let id: Int
@@ -17,7 +15,7 @@ class Cell: SKShapeNode {
     var ring = [Pixel]()
     var state = State()
 
-    init(id: Int) {
+    init(id: Int, radius: CGFloat) {
         self.id = id
 
         super.init()
