@@ -47,7 +47,7 @@ class Cell: SKShapeNode {
         for statelet in state.statelets {
             for i in 0..<statelet.pattern.count {
 
-                let index = abs((i + Int(statelet.rotation)) % statelet.pattern.count)
+                let index = abs((i + Int(statelet.rotationAmount)) % statelet.pattern.count)
                 let color = statelet.pattern[index]
                 // colors[i] += color
                 colors[i] = color

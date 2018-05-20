@@ -10,14 +10,21 @@ import Cocoa
 
 class Statelet {
 
-    struct Pattern {
-        let ledInitialStates = [Int: NSColor]()
-    }
-
-    enum Motion {
+    enum Direction {
         case none
         case clockwise
         case anticlockwise
+    }
+
+    enum Spin {
+        case none
+        case quickspin
+        case windUpWindDown
+        case throwAround
+        case loading
+        case aroundHalfAndBack
+        case slowProgress
+        case twoStepsForwardOneStepBack
     }
 
     enum Pulse {
@@ -32,8 +39,8 @@ class Statelet {
 
     var pattern = [NSColor](repeating: NSColor.black, count: 12)
 
-    var motion: Motion = .clockwise
-    var rotation: Float = 0
+    var direction: Direction = .clockwise
+    var rotationAmount: Float = 0
 
     var pulse: Pulse = .none
     var alpha: CGFloat = 0
@@ -41,7 +48,7 @@ class Statelet {
     var mutatability: Float = 0.1 // what should these default values be?
     var virality: Float = 0.5
     var resilience: Float = 0
-    var relativeSpeed: Float = 0.5
+    var relativeSpeed: Float = 0.01
 
     var mutationElapsedTime: TimeInterval = 0
     var mutationRequiredTime: TimeInterval = 1
@@ -52,17 +59,20 @@ class Statelet {
 
         if dt == 0 { return }
 
-        switch motion {
+        switch direction {
         case .clockwise:
-            rotation += relativeSpeed / Float(dt)
+            rotationAmount += relativeSpeed / Float(dt)
         case .anticlockwise:
-            rotation -= relativeSpeed / Float(dt)
+            rotationAmount -= relativeSpeed / Float(dt)
         default: break
         }
 
-        let intR = Int(rotation)
-        if intR > pattern.count { rotation = Float(intR % pattern.count) }
-        if intR < 0 { rotation = Float(intR % -pattern.count) }
+        while rotationAmount > Float(pattern.count) {
+            rotationAmount -= Float(pattern.count)
+        }
+        while rotationAmount < 0 {
+            rotationAmount += Float(pattern.count)
+        }
 
         switch pulse {
         case .breathe:
