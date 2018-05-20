@@ -19,9 +19,36 @@ class InstallationScene: SKScene {
 
     private var lastUpdateTime : TimeInterval = 0
 
+    override func sceneDidLoad() {
+        super.sceneDidLoad()
+
+        anchorPoint = .zero
+
+        let xStride = 720/6
+        let yStride = 320/3
+
+        for y in 1...4 {
+            for x in 1...5 {
+
+                let cell = CellBuilder.cell(radius: 30)
+                cells.append(cell)
+                cell.position = CGPoint(x: x * xStride, y: (6 - y) * yStride)
+
+                addChild(cell)
+            }
+        }
+
+        for cell in cells {
+            cell.findNeighbors(in: cells.filter { $0 != cell } )
+        }
+        for cell in cells {
+            CellBuilder.labelPorts(on: cell)
+        }
+    }
+
     override func mouseUp(with event: NSEvent) {
 
-        let cell = CellBuilder.cell(id: cells.count, radius: 30)
+        let cell = CellBuilder.cell(radius: 30)
         cells.append(cell)
         cell.position = event.location(in: self)
 

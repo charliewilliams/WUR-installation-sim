@@ -10,6 +10,7 @@ import Foundation
 
 protocol StateMutatable {
 
+    var serial: Int { get }
     func consider(externalStatelet statelet: Statelet)
 }
 
