@@ -42,52 +42,17 @@ class Cell: SKShapeNode {
         let sameRow: ((SKNode) -> (Bool)) = { abs($0.position.y - self.position.y) < spread }
 
         let verticalSort: ((SKNode, SKNode) -> (Bool)) = { abs($0.position.y - self.position.y) < abs($1.position.y - self.position.y) }
+        let horizontalSort: ((SKNode, SKNode) -> (Bool)) = { abs($0.position.x - self.position.x) < abs($1.position.x - self.position.x) }
 
         let north = cells.filter { $0.position.y > position.y }.filter(sameColumn).sorted(by: verticalSort).first
         let south = cells.filter { $0.position.y < position.y }.filter(sameColumn).sorted(by: verticalSort).first
 
-        let east = cells.filter(sameRow)
-        let west = cells.filter(sameRow)
+        let east = cells.filter { $0.position.x > position.x }.filter(sameRow).sorted(by: horizontalSort).first
+        let west = cells.filter { $0.position.x < position.x }.filter(sameRow).sorted(by: horizontalSort).first
 
-//        var minNdist = CGFloat.greatestFiniteMagnitude
-//        var minEdist = CGFloat.greatestFiniteMagnitude
-//        var minSdist = CGFloat.greatestFiniteMagnitude
-//        var minWdist = CGFloat.greatestFiniteMagnitude
-//
-//        let aboveAndBelow = cells.filter { abs(position.x - $0.position.x) < radius }
-//        let leftAndRight = cells.filter { abs(position.y - $0.position.y) < radius }
-//
-//        for cell in aboveAndBelow {
-//
-//            if cell == self { continue }
-//
-//            // N
-//            if cell.position.y - position.y < minNdist {
-//                minNdist = position.y - cell.position.y
-//                ports[0].partner = cell
-//            }
-//            // S
-//            if position.y - cell.position.y < minSdist {
-//                minSdist = cell.position.y - position.y
-//                ports[2].partner = cell
-//            }
-//        }
-//
-//        for cell in leftAndRight {
-//
-//            if cell == self { continue }
-//
-//            // E
-//            if cell.position.x - position.x < minWdist {
-//                minWdist = cell.position.x - position.x
-//                ports[3].partner = cell
-//            }
-//            // W
-//            if position.x - cell.position.x < minEdist {
-//                minEdist = position.x - cell.position.x
-//                ports[1].partner = cell
-//            }
-//        }
+        for (index, partner) in [north, east, south, west].enumerated() {
+            ports[index].partner = partner
+        }
     }
 
     func tick() {
