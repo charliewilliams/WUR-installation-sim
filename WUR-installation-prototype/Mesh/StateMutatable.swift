@@ -11,6 +11,7 @@ import Foundation
 protocol StateMutatable {
 
     var serial: Int { get }
+    func spreadMutation(in statelet: Statelet)
     func consider(externalStatelet statelet: Statelet)
 }
 

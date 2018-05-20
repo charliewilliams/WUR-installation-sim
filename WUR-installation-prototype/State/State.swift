@@ -10,7 +10,7 @@ import Foundation
 
 class State {
 
-    var statelets = [Statelet]()
+    private(set) var statelets = [Statelet]()
 
     init() { }
 
@@ -19,5 +19,9 @@ class State {
         statelets.forEach { $0.tick() }
     }
 
-    
+    func integrate(_ newStatelet: Statelet) {
+
+        // how to make them not just be additive forever?
+        statelets.append(newStatelet)
+    }
 }

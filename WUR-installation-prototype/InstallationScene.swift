@@ -55,6 +55,20 @@ class InstallationScene: SKScene {
         addChild(cell)
     }
 
+    override func keyDown(with event: NSEvent) {
+
+        guard let key = event.charactersIgnoringModifiers?.first else {
+            return
+        }
+
+        switch key {
+        case " ":
+            cells.forEach { $0.toggleDebug() }
+        default:
+            break
+        }
+    }
+
     // Boilerplate
     override func update(_ currentTime: TimeInterval) {
 

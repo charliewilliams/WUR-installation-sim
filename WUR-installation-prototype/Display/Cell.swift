@@ -17,6 +17,8 @@ class Cell: SKShapeNode {
     var state = State()
     let ports: [Port] = [Port(.n), Port(.e), Port(.s), Port(.w)]
 
+    var debugLabels: [SKLabelNode]  = []
+
     init(radius: CGFloat) {
 
         self.radius = radius
@@ -58,11 +60,29 @@ class Cell: SKShapeNode {
     func tick() {
         state.tick()
     }
+
+    func toggleDebug() {
+
+        for label in debugLabels {
+            label.isHidden = !label.isHidden
+        }
+    }
 }
 
 extension Cell: StateMutatable {
 
+    func spreadMutation(in statelet: Statelet) {
+
+        ports.randomItem().pass(statelet)
+    }
+
     func consider(externalStatelet statelet: Statelet) {
 
+        // virality is 0...1 so at most we have a 50% chance of accepting the mutation
+        let accept = Float.random(in: 0...2) < statelet.virality
+
+        if accept {
+            state.integrate(statelet)
+        }
     }
 }

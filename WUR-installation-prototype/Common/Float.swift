@@ -25,3 +25,16 @@ extension FloatingPoint {
     var degreesToRadians: Self { return self * .pi / 180 }
     var radiansToDegrees: Self { return self * 180 / .pi }
 }
+
+extension Float {
+
+    /// Generates a random `Float` within `0.0...1.0`
+    public static func random() -> Float {
+        return random(in: 0.0...1.0)
+    }
+
+    /// Generates a random `Double` inside of the closed interval.
+    public static func random(in interval: ClosedRange<Float>) -> Float {
+        return interval.lowerBound + (interval.upperBound - interval.lowerBound) * (Float(arc4random()) / Float(UInt32.max))
+    }
+}

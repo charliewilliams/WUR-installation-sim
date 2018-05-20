@@ -43,6 +43,7 @@ class Statelet {
     let pulse: Pulse = .none
     
     var mutatability: Float = 0 // what should these default values be?
+    var virality: Float = 0.5
     var resilience: Float = 0
     var relativeSpeed: Float = 0
 
@@ -52,7 +53,7 @@ class Statelet {
 
     func tick() {
 
-        if mutatability > Float(arc4random_uniform(100)) {
+        if mutatability > Float.random(in: 0...100) {
             mutate()
         }
     }
@@ -66,6 +67,9 @@ class Statelet {
      */
     private func mutate() {
 
+        // todo - change pattern etc
+
+        // drift these numbers
         resilience.drift(amount: mutatability)
         relativeSpeed.drift(amount: mutatability)
         mutatability.drift(amount: mutatability)

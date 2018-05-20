@@ -58,6 +58,7 @@ struct CellBuilder {
             debugLabel.position = CGPoint(x: cos(radians) * cell.radius * 1.4, y: sin(radians) * cell.radius * 1.2)
 
             cell.addChild(debugLabel)
+            cell.debugLabels.append(debugLabel)
         }
     }
 }
