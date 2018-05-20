@@ -28,6 +28,7 @@
 		C0874DF720AF2344008EE603 /* NSColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0874DF620AF2344008EE603 /* NSColor.swift */; };
 		C0874DF920AF2C1A008EE603 /* InstallationScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = C0874DF820AF2C1A008EE603 /* InstallationScene.sks */; };
 		C0874DFB20AF2C8E008EE603 /* InstallationScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0874DFA20AF2C8E008EE603 /* InstallationScene.swift */; };
+		C0874DFF20B1FDC5008EE603 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0874DFE20B1FDC5008EE603 /* Color.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		C0874DF620AF2344008EE603 /* NSColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSColor.swift; sourceTree = "<group>"; };
 		C0874DF820AF2C1A008EE603 /* InstallationScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = InstallationScene.sks; sourceTree = "<group>"; };
 		C0874DFA20AF2C8E008EE603 /* InstallationScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallationScene.swift; sourceTree = "<group>"; };
+		C0874DFE20B1FDC5008EE603 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +173,7 @@
 				C0874DF020AF1CCD008EE603 /* Pixel.swift */,
 				C0874DF220AF1CD4008EE603 /* Cell.swift */,
 				C0874DF420AF1E84008EE603 /* CellBuilder.swift */,
+				C0874DFE20B1FDC5008EE603 /* Color.swift */,
 			);
 			path = Display;
 			sourceTree = "<group>";
@@ -283,6 +286,7 @@
 				C0874DFB20AF2C8E008EE603 /* InstallationScene.swift in Sources */,
 				C0874DE720AEED52008EE603 /* Array.swift in Sources */,
 				C0874DE120AEE629008EE603 /* Port.swift in Sources */,
+				C0874DFF20B1FDC5008EE603 /* Color.swift in Sources */,
 				C0874DF120AF1CCD008EE603 /* Pixel.swift in Sources */,
 				C0874DF520AF1E84008EE603 /* CellBuilder.swift in Sources */,
 				C0874DF320AF1CD4008EE603 /* Cell.swift in Sources */,

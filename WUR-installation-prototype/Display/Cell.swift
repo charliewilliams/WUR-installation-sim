@@ -12,8 +12,9 @@ class Cell: SKShapeNode {
 
     var serial: Int = 0
     let radius: CGFloat
+    var elapsed: TimeInterval = 0
 
-    var ring = [Pixel]()
+    var pixels = [Pixel]()
     var state = State()
     let ports: [Port] = [Port(.n), Port(.e), Port(.s), Port(.w)]
 
@@ -37,28 +38,25 @@ class Cell: SKShapeNode {
         CellBuilder.buildPixels(for: self, radius: radius)
     }
 
-    func findNeighbors(in cells: [Cell]) {
+    func tick(dt: TimeInterval) {
+        
+        state.tick(dt: dt)
 
-        let spread = radius * 2
-        let sameColumn: ((SKNode) -> (Bool)) = { abs($0.position.x - self.position.x) < spread }
-        let sameRow: ((SKNode) -> (Bool)) = { abs($0.position.y - self.position.y) < spread }
+        var colors = [NSColor](repeating: NSColor.black, count: 12)
 
-        let verticalSort: ((SKNode, SKNode) -> (Bool)) = { abs($0.position.y - self.position.y) < abs($1.position.y - self.position.y) }
-        let horizontalSort: ((SKNode, SKNode) -> (Bool)) = { abs($0.position.x - self.position.x) < abs($1.position.x - self.position.x) }
+        for statelet in state.statelets {
+            for i in 0..<statelet.pattern.count {
 
-        let north = cells.filter { $0.position.y > position.y }.filter(sameColumn).sorted(by: verticalSort).first
-        let south = cells.filter { $0.position.y < position.y }.filter(sameColumn).sorted(by: verticalSort).first
-
-        let east = cells.filter { $0.position.x > position.x }.filter(sameRow).sorted(by: horizontalSort).first
-        let west = cells.filter { $0.position.x < position.x }.filter(sameRow).sorted(by: horizontalSort).first
-
-        for (index, partner) in [north, east, south, west].enumerated() {
-            ports[index].partner = partner
+                let index = abs((i + Int(statelet.rotation)) % statelet.pattern.count)
+                let color = statelet.pattern[index]
+                // colors[i] += color
+                colors[i] = color
+            }
         }
-    }
 
-    func tick() {
-        state.tick()
+        for (i, pixel) in pixels.enumerated() {
+            pixel.color = colors[i]
+        }
     }
 
     func toggleDebug() {

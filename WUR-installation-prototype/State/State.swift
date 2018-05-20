@@ -10,18 +10,19 @@ import Foundation
 
 class State {
 
-    private(set) var statelets = [Statelet]()
+    private(set) var statelets = [Statelet()]
 
     init() { }
 
-    // a way to update the leds based on the sum of the current statelets
-    func tick() {
-        statelets.forEach { $0.tick() }
+    func tick(dt: TimeInterval) {
+
+        statelets.forEach { $0.tick(dt: dt) }
     }
 
     func integrate(_ newStatelet: Statelet) {
 
-        // how to make them not just be additive forever?
+        // only one statelet for each motion type is allowed
+        statelets = statelets.filter { $0.motion != newStatelet.motion }
         statelets.append(newStatelet)
     }
 }

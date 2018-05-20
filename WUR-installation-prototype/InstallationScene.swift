@@ -39,11 +39,14 @@ class InstallationScene: SKScene {
         }
 
         for cell in cells {
-            cell.findNeighbors(in: cells.filter { $0 != cell } )
+            CellBuilder.findNeighbors(for: cell, in: cells.filter { $0 != cell })
         }
         for cell in cells {
             CellBuilder.labelPorts(on: cell)
         }
+
+        // HACK
+        cells[12].state.statelets.first?.mutate()
     }
 
     override func mouseUp(with event: NSEvent) {
@@ -83,6 +86,10 @@ class InstallationScene: SKScene {
         // Update entities
         for entity in entities {
             entity.update(deltaTime: dt)
+        }
+
+        for cell in cells {
+            cell.tick(dt: dt)
         }
 
         lastUpdateTime = currentTime

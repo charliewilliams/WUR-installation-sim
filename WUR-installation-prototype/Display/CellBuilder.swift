@@ -34,6 +34,7 @@ struct CellBuilder {
             pixel.position = CGPoint(x: cos(radians) * radius * 0.8, y: sin(radians) * radius * 0.8)
 
             cell.addChild(pixel)
+            cell.pixels.append(pixel)
         }
 
         // add debug label
@@ -59,6 +60,26 @@ struct CellBuilder {
 
             cell.addChild(debugLabel)
             cell.debugLabels.append(debugLabel)
+        }
+    }
+
+    static func findNeighbors(for cell: Cell, in cells: [Cell]) {
+
+        let spread = cell.radius * 2
+        let sameColumn: ((SKNode) -> (Bool)) = { abs($0.position.x - cell.position.x) < spread }
+        let sameRow: ((SKNode) -> (Bool)) = { abs($0.position.y - cell.position.y) < spread }
+
+        let verticalSort: ((SKNode, SKNode) -> (Bool)) = { abs($0.position.y - cell.position.y) < abs($1.position.y - cell.position.y) }
+        let horizontalSort: ((SKNode, SKNode) -> (Bool)) = { abs($0.position.x - cell.position.x) < abs($1.position.x - cell.position.x) }
+
+        let north = cells.filter { $0.position.y > cell.position.y }.filter(sameColumn).sorted(by: verticalSort).first
+        let south = cells.filter { $0.position.y < cell.position.y }.filter(sameColumn).sorted(by: verticalSort).first
+
+        let east = cells.filter { $0.position.x > cell.position.x }.filter(sameRow).sorted(by: horizontalSort).first
+        let west = cells.filter { $0.position.x < cell.position.x }.filter(sameRow).sorted(by: horizontalSort).first
+
+        for (index, partner) in [north, east, south, west].enumerated() {
+            cell.ports[index].partner = partner
         }
     }
 }

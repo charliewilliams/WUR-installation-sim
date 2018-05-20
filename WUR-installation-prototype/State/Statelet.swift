@@ -10,16 +10,8 @@ import Cocoa
 
 class Statelet {
 
-    class Color: NSColor {
-        static var rouge = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
-        static var greeen = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
-        static var oranges = #colorLiteral(red: 0.9083227515, green: 0.4916348457, blue: 0, alpha: 1)
-        static var lightPurple = #colorLiteral(red: 0.8429682851, green: 0.780713737, blue: 0.9477006793, alpha: 1)
-        static var purpled = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
-    }
-
     struct Pattern {
-        let ledInitialStates = [Int: Color]()
+        let ledInitialStates = [Int: NSColor]()
     }
 
     enum Motion {
@@ -38,23 +30,55 @@ class Statelet {
         case doubleFlash
     }
 
-    let pattern = Pattern()
-    let motion: Motion = .none
-    let pulse: Pulse = .none
+    var pattern = [NSColor](repeating: NSColor.black, count: 12)
+
+    var motion: Motion = .clockwise
+    var rotation: Float = 0
+
+    var pulse: Pulse = .none
+    var alpha: CGFloat = 0
     
-    var mutatability: Float = 0 // what should these default values be?
+    var mutatability: Float = 0.1 // what should these default values be?
     var virality: Float = 0.5
     var resilience: Float = 0
-    var relativeSpeed: Float = 0
+    var relativeSpeed: Float = 0.5
 
-    init() {
+    var mutationElapsedTime: TimeInterval = 0
+    var mutationRequiredTime: TimeInterval = 1
 
-    }
+    init() { }
 
-    func tick() {
+    func tick(dt: TimeInterval) {
 
-        if mutatability > Float.random(in: 0...100) {
-            mutate()
+        if dt == 0 { return }
+
+        switch motion {
+        case .clockwise:
+            rotation += relativeSpeed / Float(dt)
+        case .anticlockwise:
+            rotation -= relativeSpeed / Float(dt)
+        default: break
+        }
+
+        let intR = Int(rotation)
+        if intR > pattern.count { rotation = Float(intR % pattern.count) }
+        if intR < 0 { rotation = Float(intR % -pattern.count) }
+
+        switch pulse {
+        case .breathe:
+            break
+            // TODO implement the rest of these - in subclasses ideally
+        default:
+            break
+        }
+
+        if mutationElapsedTime >= mutationRequiredTime {
+            mutationElapsedTime = 0
+            if mutatability > Float.random(in: 0...100) {
+                mutate()
+            }
+        } else {
+            mutationElapsedTime += dt
         }
     }
 
@@ -65,9 +89,10 @@ class Statelet {
         - mutatability
         - resilience
      */
-    private func mutate() {
-
+    func mutate() {
+        
         // todo - change pattern etc
+        pattern[3] = .oranges
 
         // drift these numbers
         resilience.drift(amount: mutatability)
